@@ -1,6 +1,6 @@
 package com.qfedu;
 
-import com.qfedu.dao.StudenDao;
+import com.qfedu.dao.StudensDao;
 import com.qfedu.entity.Students;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -30,13 +30,22 @@ public class StudentsDaoTest {
         SqlSessionFactory factory = builder.build(is);
 
         SqlSession sqlSession = factory.openSession();
-        StudenDao mapper = sqlSession.getMapper(StudenDao.class);
+        StudensDao mapper = sqlSession.getMapper(StudensDao.class);
 
         Students stu = new Students(20,1115,"王二狗","男",22);
         int i = mapper.insertStudent(stu);
         sqlSession.commit();
         sqlSession.clearCache();
         System.out.println(i);
+    }
+
+
+    @Test
+    public  void test2(){
+
+
+        ThreadLocal threadLocal = new ThreadLocal();
+        System.out.println(threadLocal.get());
     }
 
 }

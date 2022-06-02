@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.StudentDao">
+
+    <resultMap id="studentMap" type="com.qfedu.entity.student">
+        <id column="stu_num" property="stuNum"/>
+        <result column="stu_name" property="stuName"/>
+        <result column="stu_class" property="stuClass"/>
+
+    </resultMap>
+
+    <select id="selectStudenById" resultMap="studentMap">
+        select * from tb_students where stu_class = #{stuClass}
+    </select>
+</mapper>

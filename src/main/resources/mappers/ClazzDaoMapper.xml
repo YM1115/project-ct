@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.ClazzDao">
+    <resultMap id="clazzMap" type="com.qfedu.entity.Clazz">
+        <id column="c_id" property="cId"></id>
+        <result column="c_name" property="cName"></result>
+        <association property="students" column="c_id" select="com.qfedu.dao.StudentDao.selectStudenById"></association>
+
+    </resultMap>
+
+    <select id="selectClazzById" resultMap="clazzMap">
+          select * from tb_class where c_id=#{cId}
+    </select>
+</mapper>
